@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Omnis View Analytics | Coming Soon</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom CSS for elements Tailwind can't handle */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .logo-container {
+            width: 40px;
+            height: 40px;
+            position: relative;
+        }
+        
+        .logo-eye {
+            width: 100%;
+            height: 100%;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            border: 2px solid #87CEEB;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-pupil {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background: #002366;
+            border-radius: 50%;
+            top: 25%;
+            left: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding-bottom: 5px;
+        }
+        
+        .logo-chart {
+            width: 80%;
+            height: 60%;
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+        }
+        
+        .logo-bar {
+            width: 20%;
+            background: #87CEEB;
+        }
+        
+        .logo-bar:nth-child(1) { height: 30%; }
+        .logo-bar:nth-child(2) { height: 60%; }
+        .logo-bar:nth-child(3) { height: 90%; }
+        
+        .logo-line {
+            position: absolute;
+            width: 60%;
+            height: 2px;
+            background: #87CEEB;
+            transform: rotate(-20deg);
+            top: 30%;
+            left: 20%;
+        }
+        
+        .logo-line::before,
+        .logo-line::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #87CEEB;
+            border-radius: 50%;
+        }
+        
+        .logo-line::before {
+            top: -3px;
+            left: 25%;
+        }
+        
+        .logo-line::after {
+            top: -3px;
+            right: 25%;
+        }
+        
+        .glow-effect {
+            box-shadow: 0 0 10px rgba(135, 206, 235, 0.7);
+        }
+        
+        .dashboard-placeholder {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .dashboard-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: #002366;
+        }
+        
+        .dashboard-placeholder::after {
+            content: 'Dashboard Preview Coming Soon';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover {
+            color: #87CEEB !important;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(135, 206, 235, 0.4);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-400 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full bg-[#002366] shadow-md z-50">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="logo-container glow-effect">
+                    <div class="logo-eye">
+                        <div class="logo-pupil">
+                            <div class="logo-chart">
+                                <div class="logo-bar"></div>
+                                <div class="logo-bar"></div>
+                                <div class="logo-bar"></div>
+                            </div>
+                            <div class="logo-line"></div>
+                        </div>
+                    </div>
+                </div>
+                <span class="text-white font-semibold text-xl">Omnis View</span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link text-white hover:text-[#87CEEB] transition">Home</a>
+                <a href="#features" class="nav-link text-white hover:text-[#87CEEB] transition">Features</a>
+                <a href="#sectors" class="nav-link text-white hover:text-[#87CEEB] transition">Sectors</a>
+                <a href="#sneak-peek" class="nav-link text-white hover:text-[#87CEEB] transition">Sneak Peek</a>
+                <a href="#waitlist" class="nav-link text-white hover:text-[#87CEEB] transition">Join Waitlist</a>
+            </div>
+            
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 bg-[#002366] text-white">
+        <div class="container mx-auto px-4 text-center animate-fade-in">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6">See Your Data Differently.</h1>
+            <p class="text-xl md:text-2xl max-w-3xl mx-auto mb-10 opacity-90">
+                Omnis View Analytics is a next-generation, AI-assisted data platform that helps people from all sectors turn raw data into clear, visual insights.
+            </p>
+            <a href="https://forms.gle/UYNdyuFZVq6fmcnw6" target="_blank" class="cta-button inline-block bg-[#87CEEB] hover:bg-[#76b8d8] text-[#002366] font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg">
+                Join the Waitlist
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#002366]">What You Can Expect By Late 2025</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 animate-fade-in delay-100">
+                    <div class="text-[#002366] mb-4">
+                        <i class="fas fa-file-upload text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#002366]">Smart Uploads</h3>
+                    <p class="text-gray-600">Drag and drop your Excel or CSV files to get started fast with automatic structure detection.</p>
+                </div>
+                
+                <!-- Feature Card 2 -->
+                <div class="bg-[#f0f9ff] p-6 rounded-lg shadow-md animate-fade-in delay-200">
+                    <div class="text-[#002366] mb-4">
+                        <i class="fas fa-chart-bar text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#002366]">Auto Chart Suggestions</h3>
+                    <p class="text-gray-600">Turn spreadsheets into optimized visualizations instantly based on your data patterns.</p>
+                </div>
+                
+                <!-- Feature Card 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-100 animate-fade-in delay-300">
+                    <div class="text-[#002366] mb-4">
+                        <i class="fas fa-robot text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#002366]">AI Assistant</h3>
+                    <p class="text-gray-600">Your co-pilot suggests dashboards and insights — you stay in control of the final output.</p>
+                </div>
+                
+                <!-- Feature Card 4 -->
+                <div class="bg-[#f0f9ff] p-6 rounded-lg shadow-md animate-fade-in delay-100">
+                    <div class="text-[#002366] mb-4">
+                        <i class="fas fa-th-large text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#002366]">Modular Dashboards</h3>
+                    <p class="text-gray-600">Build custom views with drag-and-drop widgets, powered by smart defaults for your data type.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectors Section -->
+    <section id="sectors" class="py-16 bg-[#f0f9ff]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-[#002366]">Built for Every Sector</h2>
+            <p class="text-center text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                Omnis View is being designed to work across multiple domains — because data challenges aren't unique to one industry.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Sector 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-fade-in delay-100">
+                    <div class="text-[#002366] mb-4">
+                        <i class="fas fa-graduation-cap text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#002366]">Education</h3>
+                    <p class="text-gray-600">Help students and teachers analyze academic performance and institutional effectiveness.</p>
+                </div>
+                
+                <!-- Sector 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-fade-in delay-200">
+                    <div class="text-[#002366] mb-4">
+                        <i class="fas fa-shopping-bag text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#002366]">Retail</h3>
+                    <p class="text-gray-600">Monitor sales, customer behavior, and seasonal trends to optimize your business strategy.</p>
+                </div>
+                
+                <!-- Sector 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-fade-in delay-300">
+                    <div class="text-[#002366] mb-4">
+                        <i class="fas fa-chart-line text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#002366]">Finance</h3>
+                    <p class="text-gray-600">Understand budgets, financial reports, and market patterns with clear visual representations.</p>
+                </div>
+                
+                <!-- Sector 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center animate-fade-in delay-400">
+                    <div class="text-[#002366] mb-4">
+                        <i class="fas fa-building text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#002366]">Operations</h3>
+                    <p class="text-gray-600">Track internal data across HR, logistics, and resource allocation for operational efficiency.</p>
+                </div>
+            </div>
+            
+            <p class="text-center text-lg text-[#002366] font-medium mt-12">
+                We're starting with schools — but we're scaling for the future.
+            </p>
+        </div>
+    </section>
+
+    <!-- AI Co-Pilot Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col lg:flex-row items-center">
+                <div class="lg:w-1/2 mb-10 lg:mb-0 lg:pr-10 animate-fade-in">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-[#002366]">Your Data Companion, Powered by AI</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Omnis View includes a built-in AI assistant that helps you make sense of your data. It doesn't just automate — it collaborates.
+                    </p>
+                    <ul class="space-y-3 text-gray-600">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-[#87CEEB] mt-1 mr-2"></i>
+                            <span>Understand trends and patterns in your data</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-[#87CEEB] mt-1 mr-2"></i>
+                            <span>Suggest appropriate visualizations for your data type</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-[#87CEEB] mt-1 mr-2"></i>
+                            <span>Validate dashboard insights with statistical analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-[#87CEEB] mt-1 mr-2"></i>
+                            <span>Learn from your preferences to improve suggestions</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 animate-fade-in delay-200">
+                    <div class="bg-[#f0f9ff] p-8 rounded-lg shadow-inner border border-[#87CEEB] border-opacity-30">
+                        <!-- Replace the entire inner content with your GIF -->
+                        <div class="relative pb-[56.25%]"> <!-- This maintains 16:9 aspect ratio -->
+                            <img src="images/AI pump live.gif" 
+                                alt="AI Assistant in action" 
+                                class="absolute top-0 left-0 w-full h-full object-cover rounded-md">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- UI Teaser Section -->
+    <section id="sneak-peek" class="py-16 bg-[#f0f9ff]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-[#002366]">A Sneak Peek at the Dashboard</h2>
+            
+            <div class="max-w-5xl mx-auto animate-fade-in">
+                <!-- Assuming the GIF is in your project's images folder -->
+                <img src="images/UI_teaser.png" 
+                    alt="Omnis View Dashboard Preview" 
+                    class="shadow-xl rounded-lg w-full h-auto">
+                <p class="text-center text-gray-500 mt-4">Interactive dashboard preview</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist CTA Section -->
+    <section id="waitlist" class="py-16 bg-[#002366] text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Help Shape the Future of Omnis View</h2>
+            <p class="text-xl max-w-3xl mx-auto mb-10 opacity-90">
+                Join our waitlist to get early access to the beta and share your thoughts on what features matter most to you.
+            </p>
+            <a href="https://forms.gle/UYNdyuFZVq6fmcnw6" target="_blank" class="cta-button inline-block bg-[#87CEEB] hover:bg-[#76b8d8] text-[#002366] font-semibold px-8 py-3 rounded-lg transition-all duration-300 shadow-lg">
+                Join the Waitlist
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#002366] text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center mb-4">
+                <div class="logo-container glow-effect">
+                    <div class="logo-eye">
+                        <div class="logo-pupil">
+                            <div class="logo-chart">
+                                <div class="logo-bar"></div>
+                                <div class="logo-bar"></div>
+                                <div class="logo-bar"></div>
+                            </div>
+                            <div class="logo-line"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Omnis View Analytics</h3>
+            <p class="text-sm opacity-80">© 2025 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu (hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-[#002366] bg-opacity-95 z-50 hidden flex-col items-center justify-center space-y-8 text-white">
+        <button id="close-menu" class="absolute top-6 right-6 text-3xl">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="#home" class="text-2xl font-medium">Home</a>
+        <a href="#features" class="text-2xl font-medium">Features</a>
+        <a href="#sectors" class="text-2xl font-medium">Sectors</a>
+        <a href="#sneak-peek" class="text-2xl font-medium">Sneak Peek</a>
+        <a href="#waitlist" class="text-2xl font-medium">Join Waitlist</a>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuButton = document.querySelector('header button');
+            const closeButton = document.getElementById('close-menu');
+            
+            menuButton.addEventListener('click', function() {
+                mobileMenu.classList.remove('hidden');
+                mobileMenu.classList.add('flex');
+            });
+            
+            closeButton.addEventListener('click', function() {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+            
+            // Close menu when clicking on a link
+            const mobileLinks = mobileMenu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                });
+            });
+            
+            // Smooth scrolling for all links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Add shadow to header on scroll
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 10) {
+                    header.classList.add('shadow-lg');
+                } else {
+                    header.classList.remove('shadow-lg');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
